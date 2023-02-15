@@ -5,4 +5,3 @@ scipy
 beautifulsoup4
 torch
 torchvision
-torchaudio

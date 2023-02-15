@@ -42,7 +42,7 @@ def telescope_option(telescope='hubble'):
         'screen' : "archives/images/screen/"
         }
     else:
-        raise NameError('Wrong argument, only hubble and webb are supported')
+        raise NameError('Wrong argument, only hubble or hst and webb or jwst are supported')
 
 
 FOLDER_PATH = Path(__file__).parent
@@ -219,12 +219,9 @@ def get_info_obs(iden, url):
     return info_galaxy
 
 
-def gen_credit():
-    pass
-
-
 if __name__ == '__main__':
     if len(argv) > 1:
-        run_all(argv[1])
+        for arg in argv[1:]:
+            run_all(arg)
     else:
         run_all()

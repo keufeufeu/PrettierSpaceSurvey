@@ -210,6 +210,11 @@ def update_metadata():
     # Saving updated metadata in one file in Image folder
     with open(IMAGE_PATH / 'meta_data.json', 'w') as f:
         json.dump(DATA, f)
+    gen_credit()
+    # Removing folders not in meta_data
+    for f in IMAGE_PATH.iterdir():
+        if f.is_dir() and (f.name not in DATA.keys()):
+            remove_folder(f.name, IMAGE_PATH)
 
 
 def is_valid_folder(folder):
@@ -257,9 +262,25 @@ def verification_database(retry_missing=False):
         print('No missing Found')
 
 
+def gen_credit():
+    credit_file = FOLDER_PATH.parent / 'CreditESA.txt'
+    credit_file.touch(exist_ok=True)
+    last_data = json.load(open(IMAGE_PATH / 'meta_data.json'))
+    sorted_id = sorted(list(last_data.keys()))
+    list_cred = []
+    for i in sorted_id:
+        cred = last_data[i]['Credit']
+        cred = cred.replace('Acknowledgement', ' Acknowledgement').replace('  ', ' ')
+        cred = f"{i} : {cred}"
+        list_cred.append(cred)
+    with open(credit_file, 'w') as f:
+        for item in list_cred:
+            f.write(item + "\n")
+
+
 if __name__ == '__main__':
     if len(argv) > 1:
-        for arg in argv:
+        for arg in argv[1:]:
             if arg in ['override', '-o']:
                 run(override=True)
             if arg in ['missing', '-m']:

@@ -1,16 +1,18 @@
 # Local files
-**/__pycache__/
+**/*/__pycache__/
+**/.*
 
 # Database stuff
 Images/
-**/*.json
+Scrapper/*galaxy.json
+CreditESA.txt
 
-# Backup versions
+# Backup and old_version versions
 old_versions/
 Model/Backup/
 
-# Note and testing files for me
+# Note and testing files
 Memo_todo.txt
-Scrapper/test_scrapper.ipynb
-Model/torch_test.ipynb
+**/*test.ipynb
+Model/models/Benchmark_note.ods
 
