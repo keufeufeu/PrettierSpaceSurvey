@@ -1,0 +1,16 @@
+# Local files
+**/__pycache__/
+
+# Database stuff
+Images/
+**/*.json
+
+# Backup versions
+old_versions/
+Model/Backup/
+
+# Note and testing files for me
+Memo_todo.txt
+Scrapper/test_scrapper.ipynb
+Model/torch_test.ipynb
+

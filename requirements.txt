@@ -1,0 +1,8 @@
+numpy
+Pillow
+scikit-image
+scipy
+beautifulsoup4
+torch
+torchvision
+torchaudio
